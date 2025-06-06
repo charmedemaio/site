@@ -12,9 +12,12 @@
 
     <header class="main-header">
         <div class="container header-content">
-            <div class="logo">
-                <a href="#" aria-label="Página Inicial Charme de Maio">Charme de Maio</a>
+            <div class="header-left">
+                <div class="logo">
+                    <a href="#" aria-label="Página Inicial Charme de Maio">Charme de Maio</a>
+                </div>
             </div>
+            
             <nav class="main-nav" aria-label="Navegação Principal">
                 <ul>
                     <li><a href="#destaques">Destaques</a></li>
@@ -25,9 +28,15 @@
                     <li><a href="#contato">Contato</a></li>
                 </ul>
             </nav>
-            <div class="header-icons">
-                <a href="https://instagram.com/charme_de_maio" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Charme de Maio"><i class="fab fa-instagram"></i></a>
-                <a href="https://wa.me/5597981175459?text=Olá! Vim do site e gostaria de conversar com vocês." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp da Charme de Maio"><i class="fab fa-whatsapp"></i></a>
+
+            <div class="header-right">
+                <div class="header-social-icons">
+                    <a href="https://instagram.com/charme_de_maio" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Charme de Maio"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/5597981175459?text=Olá! Vim do site e gostaria de conversar com vocês." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp da Charme de Maio"><i class="fab fa-whatsapp"></i></a>
+                </div>
+                <button class="menu-toggle" aria-label="Abrir ou fechar menu de navegação">
+                    <span class="hamburger-icon"></span>
+                </button>
             </div>
         </div>
     </header>
@@ -193,7 +202,7 @@
                         <h3>Nosso Endereço</h3>
                         <p>Rua Dias Martins - Bairro São Francisco</p>
                         <p>Envira - AM</p>
-                        <a href="https://www.google.com/maps/search/?api=1&query=Rua+Dias+Martins,+Bairro+São+Francisco,+Envira+-+AM" target="_blank" rel="noopener noreferrer" class="btn secondary-btn small-btn">Ver no Mapa</a>
+                        <a href="https://maps.app.goo.gl/SEU_ENDERECO_NO_MAPS" target="_blank" rel="noopener noreferrer" class="btn secondary-btn small-btn">Ver no Mapa</a>
                     </div>
                     <div class="contact-item">
                         <i class="fab fa-whatsapp" aria-hidden="true"></i>
@@ -292,23 +301,5 @@
         </div>
     </footer>
 
-    <script>
-        // JavaScript para o Header que some ao rolar
-        let lastScrollY = window.scrollY;
-        const mainHeader = document.querySelector('.main-header');
-        const headerHeight = mainHeader.offsetHeight; // Altura do header
-
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > lastScrollY && window.scrollY > headerHeight) {
-                // Rolando para baixo e já passou da altura inicial do header
-                mainHeader.classList.add('header-hidden');
-            } else if (window.scrollY < lastScrollY) {
-                // Rolando para cima
-                mainHeader.classList.remove('header-hidden');
-            }
-            lastScrollY = window.scrollY;
-        });
-    </script>
-
-</body>
+    <script src="script.js"></script> </body>
 </html>
