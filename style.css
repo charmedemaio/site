@@ -1,0 +1,937 @@
+
+/* Paleta de Cores */
+:root {
+    --primary-pink: #F8BBD0;    /* Rosa Pastel (mais suave) */
+    --secondary-pink: #F48FB1;  /* Rosa Médio (principal) */
+    --accent-pink: #E1BEE7;    /* Lilás Rosado Suave (detalhe) */
+    --light-bg: #FDFDFD;        /* Quase branco para fundo */
+    --text-dark: #2c3e50;      /* Azul escuro quase preto para texto principal - Mais moderno que preto puro */
+    --text-light: #7f8c8d;      /* Cinza médio para texto secundário */
+    --white: #FFFFFF;
+    --gray-light: #EEEEEE;
+    --border-color: #E0E0E0;    /* Cor de borda suave */
+    --shadow-color: rgba(0, 0, 0, 0.08); /* Sombra mais sutil */
+    --hover-shadow: rgba(0, 0, 0, 0.15); /* Sombra no hover */
+    --overlay-color: rgba(85, 16, 63, 0.65); /* Overlay mais escuro para banner */
+}
+
+/* Reset Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Helper Classes */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-padded {
+    padding: 80px 0;
+}
+
+.bg-light {
+    background-color: var(--light-bg);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0,0,0,0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    line-height: 1.2; /* Ajuste para melhor leitura */
+}
+
+h1 {
+    font-size: 3.8em; /* Maior e mais impactante */
+    color: var(--white);
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+}
+
+h2 {
+    font-size: 2.8em;
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 90px; /* Underline mais pronunciado */
+    height: 4px;
+    background-color: var(--secondary-pink);
+    border-radius: 2px;
+}
+
+h3 {
+    font-size: 1.6em;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+}
+
+h4 {
+    font-size: 1.3em;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+p {
+    margin-bottom: 15px;
+    color: var(--text-light);
+}
+
+.section-description { /* Novo estilo para descrição de seções */
+    text-align: center;
+    max-width: 800px;
+    margin: -40px auto 60px auto; /* Ajusta a margem para ficar logo abaixo do h2 */
+    font-size: 1.1em;
+    line-height: 1.8;
+}
+
+
+/* Links */
+a {
+    text-decoration: none;
+    color: var(--secondary-pink);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-pink);
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 14px 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    font-size: 1em;
+}
+
+.primary-btn {
+    background-color: var(--secondary-pink);
+    color: var(--white);
+    box-shadow: 0 4px 8px rgba(244, 143, 177, 0.3); /* Sombra sutil para destaque */
+}
+
+.primary-btn:hover {
+    background-color: var(--primary-pink);
+    transform: translateY(-3px); /* Efeito de elevação maior */
+    box-shadow: 0 6px 12px rgba(244, 143, 177, 0.4);
+}
+
+.secondary-btn {
+    background-color: var(--gray-light);
+    color: var(--text-dark);
+    border: 1px solid var(--border-color);
+}
+
+.secondary-btn:hover {
+    background-color: var(--accent-pink);
+    color: var(--white);
+    transform: translateY(-3px);
+    border-color: var(--accent-pink);
+    box-shadow: 0 4px 8px rgba(225, 190, 231, 0.3);
+}
+
+.small-btn { /* Para botões menores como "Ver no Mapa" */
+    padding: 8px 15px;
+    font-size: 0.85em;
+    border-radius: 5px;
+}
+
+/* Header */
+.main-header {
+    background-color: var(--white);
+    padding: 20px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08); /* Sombra mais destacada */
+    position: fixed; /* Alterado para fixed */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transition: transform 0.3s ease-out; /* Transição para sumir/aparecer */
+}
+
+.main-header.header-hidden {
+    transform: translateY(-100%); /* Esconde o header acima da tela */
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo a {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2em; /* Logo maior */
+    font-weight: 700;
+    color: var(--secondary-pink);
+    transition: color 0.3s ease;
+}
+
+.logo a:hover {
+    color: var(--primary-pink);
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.main-nav ul li {
+    margin-left: 40px; /* Mais espaçamento */
+}
+
+.main-nav ul li a {
+    color: var(--text-light);
+    font-weight: 400;
+    font-size: 1.1em;
+    padding: 8px 0; /* Área de clique maior */
+    position: relative;
+    display: block; /* Para o after funcionar bem */
+}
+
+.main-nav ul li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0;
+    height: 3px; /* Sublinhado mais grosso */
+    background-color: var(--secondary-pink);
+    transition: width 0.3s ease-in-out;
+}
+
+.main-nav ul li a:hover::after {
+    width: 100%;
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Espaço entre os ícones */
+}
+
+.header-icons a {
+    font-size: 1.7em; /* Ícones maiores */
+    color: var(--text-light);
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.header-icons a:hover {
+    color: var(--secondary-pink);
+    transform: scale(1.15); /* Efeito de zoom no hover */
+}
+
+/* Hero Banner */
+.hero-banner {
+    background: url('/imagens/hero.jpg') center center/cover no-repeat;
+    color: var(--white);
+    text-align: center;
+    padding: 180px 0;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Adicione um padding-top ao main ou body para compensar o header fixo */
+    padding-top: 300px; /* Ajuste conforme a altura do seu header */
+}
+
+.hero-content {
+    max-width: 900px;
+}
+
+.hero-content p {
+    font-size: 1.5em; /* Texto maior no banner */
+    margin-bottom: 50px;
+    font-weight: 300;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.9); /* Texto mais claro */
+}
+
+/* Product Grid (Novidades e Destaques) */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Mais compacto */
+    gap: 30px; /* Espaçamento menor */
+    margin-bottom: 60px;
+}
+
+.product-item {
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px var(--shadow-color); /* Sombra mais suave */
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-color); /* Borda sutil */
+}
+
+.product-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px var(--hover-shadow);
+}
+
+.product-item a {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
+.product-item img {
+    width: 100%;
+    height: 380px; /* Ajuste se necessário para suas imagens */
+    object-fit: cover;
+    display: block; /* Remove espaço extra abaixo da imagem */
+    border-bottom: 1px solid var(--border-color);
+}
+
+.product-info {
+    padding: 20px; /* Padding interno */
+    display: flex; /* Para alinhar título e botão */
+    flex-direction: column; /* Coloca título e botão em colunas */
+    align-items: center; /* Centraliza horizontalmente */
+    justify-content: center; /* Centraliza verticalmente se houver espaço */
+    min-height: 120px; /* Garante altura mínima para info box */
+}
+
+.product-item h3 {
+    margin-top: 0; /* Remove margin-top extra */
+    margin-bottom: 15px; /* Espaço abaixo do título e acima do botão */
+    font-size: 1.3em;
+    color: var(--text-dark);
+}
+
+/* Remove a estilização de preço e categoria, pois não serão mais exibidas */
+.product-item .product-category,
+.product-item .product-price {
+    display: none;
+}
+
+
+.add-to-cart-btn { /* Renomeado para .btn-detalhes ou similar para clareza se quiser */
+    background-color: var(--secondary-pink);
+    color: var(--white);
+    padding: 10px 20px;
+    font-size: 0.95em;
+    width: calc(100% - 40px); /* Ocupa quase a largura do item */
+    margin: 0 auto;
+    border-radius: 5px;
+}
+
+.add-to-cart-btn:hover {
+    background-color: var(--primary-pink);
+    transform: translateY(-2px);
+}
+
+
+/* Category Grid */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 25px; /* Espaçamento ajustado */
+    text-align: center;
+}
+
+.category-item {
+    background-color: var(--white);
+    padding: 20px; /* Padding ajustado para acomodar imagem */
+    border-radius: 10px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+}
+
+.category-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px var(--hover-shadow);
+    background-color: var(--secondary-pink);
+    color: var(--white);
+}
+
+.category-item img { /* Adicionado estilo para a imagem da categoria */
+    width: 100px; /* Tamanho fixo para a imagem */
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%; /* Imagem redonda */
+    margin-bottom: 15px;
+    border: 2px solid var(--primary-pink); /* Borda para destaque */
+    transition: border-color 0.3s ease;
+}
+
+.category-item:hover img {
+    border-color: var(--white);
+}
+
+.category-item i { /* Mantido caso queira voltar para ícones, mas o IMG é preferencial agora */
+    font-size: 3.2em; /* Ícones de categoria maiores */
+    color: var(--secondary-pink);
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+    display: none; /* Oculta ícones para usar imagens */
+}
+
+.category-item span {
+    font-size: 1.15em;
+    font-weight: 600;
+    color: var(--text-dark);
+    transition: color 0.3s ease;
+}
+
+.category-item:hover span {
+    color: var(--white);
+}
+
+
+/* CTA Section (Promoções/Newsletter) */
+.cta-section {
+    background: linear-gradient(to right, var(--primary-pink), var(--accent-pink)); /* Gradiente sutil */
+    color: var(--white);
+    padding: 60px 0;
+}
+
+.cta-section h2, .cta-section p {
+    color: var(--white);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.cta-section h2::after {
+    background-color: var(--white); /* Underline branco */
+}
+
+.newsletter-form {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    max-width: 600px;
+    margin: 30px auto 0 auto;
+}
+
+.newsletter-form input[type="email"] {
+    flex-grow: 1;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    background-color: rgba(255, 255, 255, 0.9); /* Fundo semi-transparente */
+    color: var(--text-dark);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.newsletter-form input[type="email"]::placeholder {
+    color: var(--text-light);
+}
+
+.newsletter-form button {
+    background-color: var(--text-dark); /* Botão de destaque */
+    color: var(--white);
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+.newsletter-form button:hover {
+    background-color: lighten(var(--text-dark), 10%); /* Ajuste de cor de hover */
+    transform: translateY(-2px);
+}
+
+
+/* About Us Section */
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 60px;
+    justify-content: center; /* Centraliza no mobile */
+}
+
+.about-text {
+    flex: 2;
+    min-width: 300px;
+    max-width: 600px; /* Limita largura para melhor leitura */
+}
+
+.about-text h2 {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.about-text h2::after {
+    left: 0;
+    transform: translateX(0);
+}
+
+.about-image {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+}
+
+.about-image img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px var(--shadow-color);
+    height: auto;
+    border: 1px solid var(--border-color);
+}
+
+/* Contact Section - Melhorias */
+.contact-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Um pouco maior e mais flexível */
+    gap: 30px;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.contact-item {
+    background-color: var(--white);
+    padding: 40px; /* Mais padding */
+    border-radius: 12px; /* Cantos mais arredondados */
+    box-shadow: 0 6px 18px var(--shadow-color); /* Sombra mais destacada */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-color);
+    display: flex; /* Para centralizar conteúdo */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-item:hover {
+    transform: translateY(-8px); /* Efeito de elevação mais notável */
+    box-shadow: 0 10px 25px var(--hover-shadow);
+}
+
+.contact-item i {
+    font-size: 3.2em; /* Ícones maiores */
+    color: var(--secondary-pink);
+    margin-bottom: 25px; /* Mais espaço */
+}
+
+.contact-item h3 {
+    font-size: 1.6em; /* Títulos maiores */
+    margin-bottom: 12px;
+    color: var(--text-dark);
+}
+
+.contact-item p {
+    font-size: 1.05em;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 10px; /* Ajuste da margem */
+}
+
+.contact-item p.note { /* Estilo para notas como "Domingos e Feriados: Fechado" */
+    font-size: 0.9em;
+    color: var(--text-dark);
+    font-weight: 500;
+    margin-top: 5px;
+}
+
+.contact-item .btn {
+    margin-top: 15px; /* Espaço entre o texto e o botão */
+}
+
+
+.contact-form {
+    max-width: 750px; /* Ligeiramente maior */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 50px; /* Mais padding */
+    background-color: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 8px 25px var(--shadow-color);
+    border: 1px solid var(--border-color);
+}
+
+.contact-form h3 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.2em; /* Título do formulário maior */
+    color: var(--secondary-pink);
+}
+
+.contact-form .form-group { /* Novo container para label + input */
+    margin-bottom: 10px;
+}
+
+.contact-form label {
+    display: block; /* Para a label ficar em uma linha e o input em outra */
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 1em;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 18px; /* Mais padding nos campos */
+    border: 1px solid var(--border-color);
+    border-radius: 10px; /* Cantos mais arredondados */
+    font-size: 1.1em;
+    font-family: 'Open Sans', sans-serif;
+    color: var(--text-dark);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: var(--light-bg); /* Fundo sutil */
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: var(--text-light);
+    opacity: 0.8;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--secondary-pink);
+    box-shadow: 0 0 0 5px rgba(244, 143, 177, 0.25); /* Sombra de foco mais visível */
+    background-color: var(--white);
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 180px; /* Altura mínima maior para a mensagem */
+}
+
+.contact-form button {
+    align-self: center;
+    padding: 18px 50px; /* Botão maior e mais espaçado */
+    font-size: 1.15em;
+    margin-top: 20px; /* Mais espaço antes do botão */
+}
+
+/* Footer */
+.main-footer {
+    background-color: var(--text-dark); /* Rodapé em tom mais escuro, como muitos e-commerce */
+    color: var(--white);
+    padding: 40px 0 0; /* Padding superior para o conteúdo */
+    font-size: 0.9em;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px; /* Espaçamento entre colunas */
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(255,255,255,0.1); /* Separador sutil */
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 200px; /* Largura mínima para as colunas */
+    margin-bottom: 20px;
+}
+
+.footer-col h4 {
+    color: var(--white);
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.footer-col h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40px; /* Sublinhado para títulos do rodapé */
+    height: 2px;
+    background-color: var(--secondary-pink);
+}
+
+.footer-col p, .footer-col li {
+    color: rgba(255,255,255,0.7);
+    line-height: 1.8;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+    color: rgba(255,255,255,0.7);
+    transition: color 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+    color: var(--secondary-pink);
+    text-decoration: underline;
+}
+
+.footer-social .fab {
+    font-size: 1.5em;
+    margin-right: 15px;
+    color: rgba(255,255,255,0.7);
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.footer-social .fab:hover {
+    color: var(--secondary-pink);
+    transform: scale(1.1);
+}
+
+.footer-bottom {
+    background-color: var(--text-dark); /* Garante que o fundo seja o mesmo */
+    padding: 20px 0;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.05); /* Borda superior mais sutil */
+}
+
+.footer-bottom .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer-bottom p {
+    margin: 0;
+    color: rgba(255,255,255,0.6);
+}
+
+.payment-methods i {
+    font-size: 2.2em; /* Ícones de pagamento maiores */
+    margin-left: 15px;
+    color: rgba(255,255,255,0.8);
+}
+
+/* ------------------- Responsividade Aprimorada ------------------- */
+@media (max-width: 992px) {
+    h1 {
+        font-size: 3.2em;
+    }
+    h2 {
+        font-size: 2.5em;
+    }
+    .main-nav ul li {
+        margin-left: 30px;
+    }
+    .product-grid {
+        gap: 25px;
+    }
+    .product-item img {
+        height: 320px; /* Ajuste para tablets */
+    }
+    .category-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
+    .about-content {
+        gap: 30px;
+    }
+    .footer-col {
+        min-width: 180px;
+    }
+    .contact-form { /* Ajuste do padding para tablets */
+        padding: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+    .main-nav ul {
+        flex-direction: column;
+        margin-top: 15px;
+    }
+    .main-nav ul li {
+        margin: 8px 0;
+    }
+    .main-nav ul li a::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .header-icons {
+        margin-top: 15px;
+    }
+    h1 {
+        font-size: 2.8em;
+    }
+    h2 {
+        font-size: 2.2em;
+        margin-bottom: 40px;
+    }
+    .hero-banner {
+        padding: 120px 0;
+    }
+    .hero-content p {
+        font-size: 1.2em;
+        margin-bottom: 30px;
+    }
+
+    .product-grid,
+    .category-grid,
+    .contact-info-grid {
+        grid-template-columns: 1fr; /* Colunas únicas para mobile */
+    }
+    .product-item img {
+        height: 300px;
+    }
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+    .about-text h2 {
+        text-align: center;
+    }
+    .about-text h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .contact-form {
+        padding: 30px;
+    }
+    .newsletter-form {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .newsletter-form button {
+        width: 100%;
+    }
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer-col {
+        min-width: auto;
+        width: 100%; /* Ocupa largura total */
+    }
+    .footer-col h4::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .footer-bottom .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .payment-methods {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-padded {
+        padding: 50px 0;
+    }
+    h1 {
+        font-size: 2em;
+    }
+    h2 {
+        font-size: 1.8em;
+        margin-bottom: 30px;
+    }
+    .btn {
+        padding: 12px 25px;
+        font-size: 0.9em;
+    }
+    .product-info {
+        padding: 15px;
+    }
+    .add-to-cart-btn {
+        padding: 8px 15px;
+        font-size: 0.85em;
+    }
+    .contact-form {
+        padding: 20px;
+    }
+    .contact-form input,
+    .contact-form textarea {
+        padding: 12px;
+        font-size: 0.95em;
+    }
+    .contact-form button {
+        align-self: stretch;
+        font-size: 1em;
+    }
+    .payment-methods i {
+        font-size: 1.8em;
+        margin: 0 8px;
+    }
+    .section-description {
+        font-size: 1em;
+        margin: -30px auto 40px auto;
+    }
+    .contact-item {
+        padding: 30px 20px; /* Reduz padding em mobile */
+    }
+    .contact-item i {
+        font-size: 2.5em;
+        margin-bottom: 15px;
+    }
+    .contact-item h3 {
+        font-size: 1.3em;
+    }
+    .contact-item p {
+        font-size: 0.95em;
+    }
+    .contact-form h3 {
+        font-size: 1.8em;
+    }
+    .contact-form label {
+        font-size: 0.9em;
+    }
+}
